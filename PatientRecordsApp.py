@@ -23,17 +23,30 @@ for line in readlinestest:
 pandas_person_read = pd.read_table(person_text_file, delimiter = "|")
 print(pandas_person_read)
 
+
+counter = 0
+patient_ID_input = input("Enter a Patient ID: ")
+
 #for loop that runs through and will print each line? had to break it cause it kept repeating
+# index = x, row = y
 for index, row in pandas_person_read.iterrows():
-    print(row)
-    break
+    print(row, "\n")
+    counter += 1
+
+    if row[0] == 78860:
+        print(row)
+    else:
+        print("Incorrect")
+
+    if counter >5:
+        break
 
 #if/else statement that tests if patient ID is number and prints correct or error
-if row[0] == 78859:
-        print("Sydney - Correct")
+#if row[0] == 78859:
+        #print("Sydney - Correct")
 
-else:
-    print("Error")
+#else:
+    #print("Error")
 
 #print(first_word)
 
