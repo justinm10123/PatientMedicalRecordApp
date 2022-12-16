@@ -1,21 +1,39 @@
 #Georgetown Pediatrics Patient Medical Records Application
 import os
 import tkinter as tk
+import pandas as pd
 
 
 #file directory for all patient record txt files
 text_file_directory = "G:/Georgetown Data/Discrete"
+person_text_file = "G:/Georgetown Data/Discrete/Person.txt"
 
 readfile_Person = open("G:/Georgetown Data/Discrete/Person.txt","r")
 
+#testing out reading each line 1 by 1
 readlinestest = readfile_Person.readlines()
 
+#splitting each line by the | character
 for line in readlinestest:
     # split the line into words
     words = line.split("|")
     first_word = words[0:100]
 
+#pandas reads in the person.txt file
+pandas_person_read = pd.read_table(person_text_file, delimiter = "|")
+print(pandas_person_read)
 
+#for loop that runs through and will print each line? had to break it cause it kept repeating
+for index, row in pandas_person_read.iterrows():
+    print(row)
+    break
 
+#if/else statement that tests if patient ID is number and prints correct or error
+if row[0] == 78859:
+        print("Sydney - Correct")
 
-print(first_word)
+else:
+    print("Error")
+
+#print(first_word)
+
