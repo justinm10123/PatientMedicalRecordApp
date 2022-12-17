@@ -33,20 +33,8 @@ for index, row in pandas_person_read.iterrows():
     print(row, "\n")
     counter += 1
 
-    if row[0] == 78860:
-        print(row)
-    else:
-        print("Incorrect")
-
     if counter >5:
         break
 
-#if/else statement that tests if patient ID is number and prints correct or error
-#if row[0] == 78859:
-        #print("Sydney - Correct")
-
-#else:
-    #print("Error")
-
-#print(first_word)
-
+filtered_list = pandas_person_read[pandas_person_read["PersonID"].std.startswith(patient_ID_input)]
+print(filtered_list)

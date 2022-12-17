@@ -1,31 +1,26 @@
 import os
+# Open the txt file in read mode
+with open("G:/Georgetown Data/Discrete/Person.txt", 'r') as file:
+  # Read the first line of the file (headers)
+  headers = file.readline()
+  # Print the headers
+  #print(headers)
 
-# path to the folder containing the text files
-folder_path = '/path/to/folder/'
+  # Ask the user for an input
+  search_term = input("Enter a Patient ID # or type Quit to Stop: ")
 
-# open the first text file and read each line
-with open(os.path.join(folder_path, 'file1.txt'), 'r') as file1:
-    for line in file1:
-        # split the line into words
-        words = line.split()
-        if len(words) > 0:
-            # get the first word from the line
-            first_word = words[0]
+  # Read the rest of the lines in the file
+  for line in file:
+    # Split the line into a list of words
+    words = line.split("|")
+    # Check if the first word in the line matches the search term
+    if words[0] == search_term:
+      # If it does, print the entire line
+      print(line)
 
-            # open the second text file and read each line
-            with open(os.path.join(folder_path, 'file2.txt'), 'r') as file2:
-                for line2 in file2:
-                    # split the line into words
-                    words2 = line2.split()
-                    if len(words2) > 0:
-                        # get the first word from the line
-                        first_word2 = words2[0]
+      #just printing Patient ID, First Name, and Last Name
+      print(words[0],words[2],words[5])
 
-                        # if the first words match, append the second line to the first line
-                        if first_word == first_word2:
-                            line += line2
-                            break
-
-        # write the updated line to the first text file
-        with open(os.path.join(folder_path, 'file1.txt'), 'w') as file1_updated:
-            file1_updated.write(line)
+        #if statement to keep the input question running until they enter quit
+      if search_term.lower() != "quit":
+        search_term = input("Enter another search term or Quit to Stop: ")
