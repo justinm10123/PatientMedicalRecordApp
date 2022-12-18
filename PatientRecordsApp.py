@@ -2,16 +2,13 @@
 import os
 import tkinter as tk
 
-
-#file directory for all patient record txt files
-text_file_directory = "G:/Georgetown Data/Discrete"
-
-person_file = open("G:/Georgetown Data/Discrete/Person.txt","r")
-patient_file = open("G:/Georgetown Data/Discrete/Patient.txt","r")
-address_file = open("G:/Georgetown Data/Discrete/Address.txt","r")
-allergy_file = open("G:/Georgetown Data/Discrete/Allergy.txt","r")
-br_account_file = open("G:/Georgetown Data/Discrete/br_Account.txt","r")
-clinical_vital_file = open("G:/Georgetown Data/Discrete/ClinicalVital.txt","r")
+# ALL INITIAL FILE DIRECORIES WILL NEED TO CHANGE WHEN HAND OFF HARD DRIVE IS CREATED #
+person_file = open("G:/Georgetown Data/Discrete/Person.txt","r") #done
+patient_file = open("G:/Georgetown Data/Discrete/Patient.txt","r") #done
+address_file = open("G:/Georgetown Data/Discrete/Address.txt","r") #done
+allergy_file = open("G:/Georgetown Data/Discrete/Allergy.txt","r") #done
+br_account_file = open("G:/Georgetown Data/Discrete/br_Account.txt","r") #done
+clinical_vital_file = open("G:/Georgetown Data/Discrete/ClinicalVital.txt","r") #done
 flag_file = open("G:/Georgetown Data/Discrete/Flag.txt","r")
 ins_coverage_patient_file = open("G:/Georgetown Data/Discrete/InsCoveragePatient.txt","r")
 insurance_coverage_file = open("G:/Georgetown Data/Discrete/InsuranceCoverage.txt","r")
@@ -32,19 +29,55 @@ patient_general_notes_file = open("G:/Georgetown Data/Discrete/PatientGeneralNot
 problem_list_file = open("G:/Georgetown Data/Discrete/ProblemList.txt","r")
 vac_pat_file = open("G:/Georgetown Data/Discrete/VacPat.txt","r")
 
-search_term = input("Enter a Patient ID #, First and Last name, or type Quit to Stop: ")
+
+
+search_term = input("Enter a Patient ID # or First and Last name: ")
 split_search_term = search_term.split()
+
+patient_id = ""
 
   # Read the rest of the lines in the file
 for line in person_file:
     # Split the line into a list of words
     words = line.split("|")
     
-    if search_term.lower() == "quit":
-        break
-
-    # Check if the first word in the line matches the search term
-    elif (words[2].lower() == split_search_term[0].lower() and words[5].lower() == split_search_term[1].lower()) or (words[0].lower() == search_term.lower()):
-      # If it does, print the entire line
+    if (words[2].lower() == split_search_term[0].lower() and words[5].lower() == split_search_term[1].lower()) or (words[0].lower() == search_term.lower()):
       split_person_line = line.split("|")
-      print(split_person_line)
+
+      #assigning array 0 of person.txt line files to the patient id
+      patient_id = split_person_line[0]
+      address_id = split_person_line[29]
+
+      #testing print statements, wont need in final code
+      print("\n", split_person_line)
+      print("\n", "Patient ID: ", patient_id)
+
+for line1 in patient_file:
+    words1 = line1.split("|")
+
+    if words1[1] == patient_id:
+        print("\n", line1)
+
+for line2 in address_file:
+    words2 = line2.split("|")
+
+    if words2[0] == address_id:
+        print("\n", line2)
+
+for line3 in allergy_file:
+    words3 = line3.split("|")
+
+    if words3[0] == patient_id:
+        print("\n", line3)
+
+for line4 in br_account_file:
+    words4 = line4.split("|")
+
+    if words4[0] == patient_id:
+        print("\n", line4)
+
+for line5 in clinical_vital_file:
+    words5 = line5.split("|")
+
+    if words5[0] == patient_id:
+        print("\n", line5)
