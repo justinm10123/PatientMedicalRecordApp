@@ -1,40 +1,25 @@
 #Georgetown Pediatrics Patient Medical Records Application
 import os
 import tkinter as tk
-import pandas as pd
 
 
 #file directory for all patient record txt files
 text_file_directory = "G:/Georgetown Data/Discrete"
-person_text_file = "G:/Georgetown Data/Discrete/Person.txt"
+person_file = open("G:/Georgetown Data/Discrete/Person.txt","r")
 
-readfile_Person = open("G:/Georgetown Data/Discrete/Person.txt","r")
+search_term = input("Enter a Patient ID #, First and Last name, or type Quit to Stop: ")
+split_search_term = search_term.split()
 
-#testing out reading each line 1 by 1
-readlinestest = readfile_Person.readlines()
-
-#splitting each line by the | character
-for line in readlinestest:
-    # split the line into words
+  # Read the rest of the lines in the file
+for line in person_file:
+    # Split the line into a list of words
     words = line.split("|")
-    first_word = words[0:100]
-
-#pandas reads in the person.txt file
-pandas_person_read = pd.read_table(person_text_file, delimiter = "|")
-print(pandas_person_read)
-
-
-counter = 0
-patient_ID_input = input("Enter a Patient ID: ")
-
-#for loop that runs through and will print each line? had to break it cause it kept repeating
-# index = x, row = y
-for index, row in pandas_person_read.iterrows():
-    print(row, "\n")
-    counter += 1
-
-    if counter >5:
+    
+    if search_term.lower() == "quit":
         break
 
-filtered_list = pandas_person_read[pandas_person_read["PersonID"].std.startswith(patient_ID_input)]
-print(filtered_list)
+    # Check if the first word in the line matches the search term
+    elif (words[2].lower() == split_search_term[0].lower() and words[5].lower() == split_search_term[1].lower()) or (words[0].lower() == search_term.lower()):
+      # If it does, print the entire line
+      split_person_line = line.split("|")
+      print(split_person_line)
