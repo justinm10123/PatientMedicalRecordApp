@@ -9,7 +9,7 @@ address_file = open("G:/Georgetown Data/Discrete/Address.txt","r") #done
 allergy_file = open("G:/Georgetown Data/Discrete/Allergy.txt","r") #done
 br_account_file = open("G:/Georgetown Data/Discrete/br_Account.txt","r") #done
 clinical_vital_file = open("G:/Georgetown Data/Discrete/ClinicalVital.txt","r") #done
-flag_file = open("G:/Georgetown Data/Discrete/Flag.txt","r")
+flag_file = open("G:/Georgetown Data/Discrete/Flag.txt","r") #dont think this is needed, only contains flag id/translations
 ins_coverage_patient_file = open("G:/Georgetown Data/Discrete/InsCoveragePatient.txt","r")
 insurance_coverage_file = open("G:/Georgetown Data/Discrete/InsuranceCoverage.txt","r")
 insurance_plan_file = open("G:/Georgetown Data/Discrete/InsurancePlan.txt","r")
@@ -24,7 +24,7 @@ pat_hist_family_file = open("G:/Georgetown Data/Discrete/PatHistFamily.txt","r")
 pat_hist_medical_file = open("G:/Georgetown Data/Discrete/PatHistMedical.txt","r")
 pat_hist_social_file = open("G:/Georgetown Data/Discrete/PatHistSocial.txt","r")
 pat_hist_surgical_file = open("G:/Georgetown Data/Discrete/PatHistSurgical.txt","r")
-patient_flags_file = open("G:/Georgetown Data/Discrete/PatientFlags.txt","r")
+patient_flags_file = open("G:/Georgetown Data/Discrete/PatientFlags.txt","r") #done
 patient_general_notes_file = open("G:/Georgetown Data/Discrete/PatientGeneralNotes.txt","r")
 problem_list_file = open("G:/Georgetown Data/Discrete/ProblemList.txt","r")
 vac_pat_file = open("G:/Georgetown Data/Discrete/VacPat.txt","r")
@@ -81,3 +81,25 @@ for line5 in clinical_vital_file:
 
     if words5[0] == patient_id:
         print("\n", line5)
+
+for line6 in patient_flags_file:
+    words6 = line6.split("|")
+
+    if words6[0] == patient_id:
+        print("\n", line6)
+
+for line7 in insurance_coverage_file:
+    words7 = line7.split("|")
+
+    if words7[1] == patient_id:
+        print("\n", line7)
+
+        #consider using a loop to create an array and append each plan id to the array
+        insurance_plan_id = [words7[2]]
+        print(insurance_plan_id) # may have multiple insurance plan id's and will need to include them all
+
+for line8 in insurance_plan_file:
+    words8 = line8.split("|")
+
+    if words8[0] == insurance_plan_id: # will probably need to use array to check each plan id and pull info
+        print("\n", line8)
