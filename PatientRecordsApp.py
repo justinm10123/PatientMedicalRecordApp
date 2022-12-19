@@ -10,9 +10,9 @@ allergy_file = open("G:/Georgetown Data/Discrete/Allergy.txt","r") #done
 br_account_file = open("G:/Georgetown Data/Discrete/br_Account.txt","r") #done
 clinical_vital_file = open("G:/Georgetown Data/Discrete/ClinicalVital.txt","r") #done
 flag_file = open("G:/Georgetown Data/Discrete/Flag.txt","r") #dont think this is needed, only contains flag id/translations
-ins_coverage_patient_file = open("G:/Georgetown Data/Discrete/InsCoveragePatient.txt","r")
-insurance_coverage_file = open("G:/Georgetown Data/Discrete/InsuranceCoverage.txt","r")
-insurance_plan_file = open("G:/Georgetown Data/Discrete/InsurancePlan.txt","r")
+ins_coverage_patient_file = open("G:/Georgetown Data/Discrete/InsCoveragePatient.txt","r") #done
+insurance_coverage_file = open("G:/Georgetown Data/Discrete/InsuranceCoverage.txt","r") #done
+insurance_plan_file = open("G:/Georgetown Data/Discrete/InsurancePlan.txt","r") #done
 medications_file = open("G:/Georgetown Data/Discrete/Medications.txt","r")
 migration_ins_export_file = open("G:/Georgetown Data/Discrete/MigrationInsExport.txt","r")
 migration_proc_export_file = open("G:/Georgetown Data/Discrete/MigrationProcExport.txt","r")
@@ -35,6 +35,7 @@ search_term = input("Enter a Patient ID # or First and Last name: ")
 split_search_term = search_term.split()
 
 patient_id = ""
+insurance_plan_id_list = []
 
   # Read the rest of the lines in the file
 for line in person_file:
@@ -93,13 +94,18 @@ for line7 in insurance_coverage_file:
 
     if words7[1] == patient_id:
         print("\n", line7)
+        insurance_plan_id_list.append(words7[2])
 
-        #consider using a loop to create an array and append each plan id to the array
-        insurance_plan_id = [words7[2]]
-        print(insurance_plan_id) # may have multiple insurance plan id's and will need to include them all
+print("LIST: ",insurance_plan_id_list) #test print of all insurance plan id's
 
 for line8 in insurance_plan_file:
     words8 = line8.split("|")
 
-    if words8[0] == insurance_plan_id: # will probably need to use array to check each plan id and pull info
+    if words8[0] in insurance_plan_id_list: ######### SOME PATIENT INSURANCE INFO IS UNDER WRONG PATIENT ID'S OR UNDER SIBLINGS NAMES. DATA DISCREPENCIES ####################
         print("\n", line8)
+
+for line9 in ins_coverage_patient_file: ###### PATIENTS HAVE MULTIPLE INSURANCE COVERAGE ID'S. NOT SURE WHICH ONES ARE NEEDED AS SOME HAVE DIFFERENT PRIORITY INSURANCE ########
+    words9 = line9.split("|")
+
+    if words9[1] == words7[0]:
+        print("\n", line9)
