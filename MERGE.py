@@ -35,6 +35,202 @@ def comprehensive_patient_search():
       # Check if the first and last name match the line
       if parts[2].lower() == first_name.lower() and parts[5].lower() == last_name.lower() and date_of_birth in parts[10]:
         # Zip the header words and line words together and add them to the output text
+        if parts[8] == "0": #Suffix ID
+          parts[8] = ""
+        elif parts[8] == "1":
+          parts[8] = "(1) Jr."
+        elif parts[8] == "2":
+          parts[8] = "(2) Sr."
+        elif parts[8] == "3":
+          parts[8] = "(3) I"
+        elif parts[8] == "4":
+          parts[8] = "(4) II"
+        elif parts[8] == "5":
+          parts[8] = "(5) III"
+        elif parts[8] == "6":
+          parts[8] = "(6) IV"
+
+        if parts[1] == "0": #Prefix ID
+          parts[1] = ""
+
+        if parts[13] == "0":   #Marriage Status
+          parts[13] = "(0) Unknown"
+        elif parts[13] == "1":
+          parts[13] = "(1) Married"
+        elif parts[13] == "2":
+          parts[13] = "(2) Single"
+        elif parts[13] == "3":
+          parts[13] = "(3) Widowed"
+        elif parts[13] == "4":
+          parts[13] = "(4) Divorced"
+        elif parts[13] == "5":
+          parts[13] = "(5) Seperated"
+        elif parts[13] == "6":
+          parts[13] = "(6) Other"
+        elif parts[13] == "7":
+          parts[13] = "(7) Common Law"
+        elif parts[13] == "8":
+          parts[13] = "(8) Living Together"
+        elif parts[13] == "9":
+          parts[13] = "(9) Domestic Partner"
+        elif parts[13] == "10":
+          parts[13] = "(10) Registered Domestic Partner"
+        elif parts[13] == "11":
+          parts[13] = "(11) Legally Seperated"
+        elif parts[13] == "12":
+          parts[13] = "(12) Annulled"
+        elif parts[13] == "13":
+          parts[13] = "(13) Interlocutory"
+        elif parts[13] == "14":
+          parts[13] = "(14) Unmarried"
+        elif parts[13] == "15":
+          parts[13] = "(15) Unreported"
+
+        if parts[19] == "1":   #Race ID
+          parts[19] = "(1) White"
+        elif parts[19] == "2":
+          parts[19] = "(2) Black"
+        elif parts[19] == "3":
+          parts[19] = "(3) Other"
+        elif parts[19] == "4":
+          parts[19] = "(4) American Indian / Alaska Native"
+        elif parts[19] == "5":
+          parts[19] = "(5) Asian"
+        elif parts[19] == "7":
+          parts[19] = "(7) Nat Hawaiian / Pacific Islander"
+        elif parts[19] == "8":
+          parts[19] = "(8) Declined"
+
+        if parts[12] == "0":   #Gender ID
+          parts[12] = "(0) Unknown"
+        elif parts[12] == "1":
+          parts[12] = "(1) Female"
+        elif parts[12] == "2":
+          parts[12] = "(2) Male"
+        elif parts[12] == "3":
+          parts[12] = "(3) Other"
+        
+        if parts[36] == "0":   #Ethnicity
+          parts[36] = "(0) Unknown"
+        elif parts[36] == "1":
+          parts[36] = "(1) Hispanic or Latino"
+        elif parts[36] == "2":
+          parts[36] = "(2) Not Hispanic or Latino"
+        elif parts[36] == "3":
+          parts[36] = "(3) Declined"
+
+        if parts[21] == "0":   #Religion ID
+          parts[21] = "(0) Unknown"
+        elif parts[21] == "1":
+          parts[21] = "(1) Protestant"
+        elif parts[21] == "2":
+          parts[21] = "(2) Catholic"
+        elif parts[21] == "3":
+          parts[21] = "(3) Buddhist"
+        elif parts[21] == "4":
+          parts[21] = "(4) Hindu"
+        elif parts[21] == "5":
+          parts[21] = "(5) Islam"
+        elif parts[21] == "6":
+          parts[21] = "(6) Other"
+        elif parts[21] == "7":
+          parts[21] = "(7) Jewish"
+        elif parts[21] == "8":
+          parts[21] = "(8) Jehovah's Witness"
+        elif parts[21] == "9":
+          parts[21] = "(9) Mormon"
+        elif parts[21] == "99":
+          parts[21] = "(99) N/A"
+
+        if parts[17] == "0":   #Primary Language ID
+          parts[17] = "(0) Unknown"
+        elif parts[17] == "1":
+          parts[17] = "(1) English"
+        elif parts[17] == "2":
+          parts[17] = "(2) Spanish"
+        elif parts[17] == "3":
+          parts[17] = "(3) French"
+        elif parts[17] == "4":
+          parts[17] = "(4) Japanese"
+        elif parts[17] == "5":
+          parts[17] = "(5) Chinese"
+        elif parts[17] == "6":
+          parts[17] = "(6) Vietnamese"
+        elif parts[17] == "7":
+          parts[17] = "(7) Russian"
+        elif parts[17] == "8":
+          parts[17] = "(8) Arabic"
+        elif parts[17] == "9":
+          parts[17] = "(9) Filipino"
+        elif parts[17] == "10":
+          parts[17] = "(10) German"
+        elif parts[17] == "11":
+          parts[17] = "(11) Greek"
+        elif parts[17] == "12":
+          parts[17] = "(12) Hindi"
+        elif parts[17] == "13":
+          parts[17] = "(13) Italian"
+        elif parts[17] == "14":
+          parts[17] = "(14) Korean"
+        elif parts[17] == "15":
+          parts[17] = "(15) Polish"
+        elif parts[17] == "16":
+          parts[17] = "(16) Portuguese"
+        elif parts[17] == "17":
+          parts[17] = "(17) Other"
+        elif parts[17] == "18":
+          parts[17] = "(18) Declined"
+        else:
+          parts[17] = "Other"
+
+        if parts[18] == "0":   #Secondary Language ID
+          parts[18] = "(0) Unknown"
+        elif parts[18] == "1":
+          parts[18] = "(1) English"
+        elif parts[18] == "2":
+          parts[18] = "(2) Spanish"
+        elif parts[18] == "3":
+          parts[18] = "(3) French"
+        elif parts[18] == "4":
+          parts[18] = "(4) Japanese"
+        elif parts[18] == "5":
+          parts[18] = "(5) Chinese"
+        elif parts[18] == "6":
+          parts[18] = "(6) Vietnamese"
+        elif parts[18] == "7":
+          parts[18] = "(7) Russian"
+        elif parts[18] == "8":
+          parts[18] = "(8) Arabic"
+        elif parts[18] == "9":
+          parts[18] = "(9) Filipino"
+        elif parts[18] == "10":
+          parts[18] = "(10) German"
+        elif parts[18] == "11":
+          parts[18] = "(11) Greek"
+        elif parts[18] == "12":
+          parts[18] = "(12) Hindi"
+        elif parts[18] == "13":
+          parts[18] = "(13) Italian"
+        elif parts[18] == "14":
+          parts[18] = "(14) Korean"
+        elif parts[18] == "15":
+          parts[18] = "(15) Polish"
+        elif parts[18] == "16":
+          parts[18] = "(16) Portuguese"
+        elif parts[18] == "17":
+          parts[18] = "(17) Other"
+        elif parts[18] == "18":
+          parts[18] = "(18) Declined"
+        else:
+          parts[18] = "Other"
+
+        if parts[30] == "0":
+          parts[30] = "(0) False"
+        elif parts[30] == "1":
+          parts[30] = "(1) True/Active"
+
+
+        
         result = ["{}: {}".format(h, p) for h, p in zip(header_words, parts)]
         output_text += "\n".join(result) + "\n"
         patient_id = parts[0]
@@ -74,6 +270,16 @@ def comprehensive_patient_search():
       # Check if the first and last name match the line
       if parts2[0] == patient_id:
         # Zip the header words and line words together and add them to the output text
+        if parts2[13] == "0":     #Enabled True/False
+          parts2[13] = "(0) False"
+        elif parts2[13] == "1":
+          parts2[13] = "(1) True/Active"
+
+        if parts2[14] == "0":     #Is patient True/False
+          parts2[14] = "(0) False"
+        elif parts2[14] == "1":
+          parts2[14] = "(1) True/Active"
+
         result2 = ["{}: {}".format(h, p) for h, p in zip(header_words2, parts2)]
         output_text += "\n".join(result2) + "\n"
         care_provider_id = parts2[19]
@@ -94,6 +300,19 @@ def comprehensive_patient_search():
       # Check if the first and last name match the line
       if parts3[0] == address_id:
         # Zip the header words and line words together and add them to the output text
+
+        if parts3[6] == "0":     #Country
+          parts3[6] = "(0) Unknown"
+        elif parts3[6] == "1":
+          parts3[6] = "(1) United States"
+        elif parts3[6] == "2":
+          parts3[6] = "(2) Mexico"
+        elif parts3[6] == "3":
+          parts3[6] = "(3) Canada"
+        elif parts3[6] == "4":
+          parts3[6] = "(4) United States Military"
+
+
         result3 = ["{}: {}".format(h, p) for h, p in zip(header_words3, parts3)]
         output_text += "\n".join(result3) + "\n"
       else:
@@ -307,9 +526,219 @@ def comprehensive_patient_search():
       # Split the line by the '|' character
       parts13 = line13.split("|")
       # Check if the first and last name match the line
-      if parts13[0] == patient_id and parts13[1] == "Financially Responsible Party":
+      if parts13[0] == patient_id:
         # Zip the header words and line words together and add them to the output text
-        result13 = ["{}: {}".format(h, p) for h, p in zip(header_words13, parts13)] ###################### Maybe only include financially responsible party???
+
+        if parts13[4] == "0":     #Enabled True/False
+          parts13[4] = "(0) False"
+        elif parts13[4] == "1":
+          parts13[4] = "(1) True/Active"
+
+        if parts13[10] == "0": #Prefix ID
+          parts13[10] = ""
+
+        if parts13[17] == "0": #Suffix ID
+          parts13[17] = ""
+        elif parts13[17] == "1":
+          parts13[17] = "(1) Jr."
+        elif parts13[17] == "2":
+          parts13[17] = "(2) Sr."
+        elif parts13[17] == "3":
+          parts13[17] = "(3) I"
+        elif parts13[17] == "4":
+          parts13[17] = "(4) II"
+        elif parts13[17] == "5":
+          parts13[17] = "(5) III"
+        elif parts13[17] == "6":
+          parts13[17] = "(6) IV"
+
+        if parts13[21] == "0": #Gender ID
+          parts13[21] = "Unknown"
+        elif parts13[21] == "1":
+          parts13[21] = "(1) Female"
+        elif parts13[21] == "2":
+          parts13[21] = "(2) Male"
+        elif parts13[21] == "3":
+          parts13[21] = "(3) Other"
+
+        if parts13[22] == "0":   #Marriage Status
+          parts13[22] = "(0) Unknown"
+        elif parts13[22] == "1":
+          parts13[22] = "(1) Married"
+        elif parts13[22] == "2":
+          parts13[22] = "(2) Single"
+        elif parts13[22] == "3":
+          parts13[22] = "(3) Widowed"
+        elif parts13[22] == "4":
+          parts13[22] = "(4) Divorced"
+        elif parts13[22] == "5":
+          parts13[22] = "(5) Seperated"
+        elif parts13[22] == "6":
+          parts13[22] = "(6) Other"
+        elif parts13[22] == "7":
+          parts13[22] = "(7) Common Law"
+        elif parts13[22] == "8":
+          parts13[22] = "(8) Living Together"
+        elif parts13[22] == "9":
+          parts13[22] = "(9) Domestic Partner"
+        elif parts13[22] == "10":
+          parts13[22] = "(10) Registered Domestic Partner"
+        elif parts13[22] == "11":
+          parts13[22] = "(11) Legally Seperated"
+        elif parts13[22] == "12":
+          parts13[22] = "(12) Annulled"
+        elif parts13[22] == "13":
+          parts13[22] = "(13) Interlocutory"
+        elif parts13[22] == "14":
+          parts13[22] = "(14) Unmarried"
+        elif parts13[22] == "15":
+          parts13[22] = "(15) Unreported"
+
+        if parts13[26] == "0":   #Primary Language ID
+          parts13[26] = "(0) Unknown"
+        elif parts13[26] == "1":
+          parts13[26] = "(1) English"
+        elif parts13[26] == "2":
+          parts13[26] = "(2) Spanish"
+        elif parts13[26] == "3":
+          parts13[26] = "(3) French"
+        elif parts13[26] == "4":
+          parts13[26] = "(4) Japanese"
+        elif parts13[26] == "5":
+          parts13[26] = "(5) Chinese"
+        elif parts13[26] == "6":
+          parts13[26] = "(6) Vietnamese"
+        elif parts13[26] == "7":
+          parts13[26] = "(7) Russian"
+        elif parts13[26] == "8":
+          parts13[26] = "(8) Arabic"
+        elif parts13[26] == "9":
+          parts13[26] = "(9) Filipino"
+        elif parts13[26] == "10":
+          parts13[26] = "(10) German"
+        elif parts13[26] == "11":
+          parts13[26] = "(11) Greek"
+        elif parts13[26] == "12":
+          parts13[26] = "(12) Hindi"
+        elif parts13[26] == "13":
+          parts13[26] = "(13) Italian"
+        elif parts13[26] == "14":
+          parts13[26] = "(14) Korean"
+        elif parts13[26] == "15":
+          parts13[26] = "(15) Polish"
+        elif parts13[26] == "16":
+          parts13[26] = "(16) Portuguese"
+        elif parts13[26] == "17":
+          parts13[26] = "(17) Other"
+        elif parts13[26] == "18":
+          parts13[26] = "(18) Declined"
+        else:
+          parts13[26] = "Other"
+
+        if parts13[27] == "0":   #Primary Language ID
+          parts13[27] = "(0) Unknown"
+        elif parts13[27] == "1":
+          parts13[27] = "(1) English"
+        elif parts13[27] == "2":
+          parts13[27] = "(2) Spanish"
+        elif parts13[27] == "3":
+          parts13[27] = "(3) French"
+        elif parts13[27] == "4":
+          parts13[27] = "(4) Japanese"
+        elif parts13[27] == "5":
+          parts13[27] = "(5) Chinese"
+        elif parts13[27] == "6":
+          parts13[27] = "(6) Vietnamese"
+        elif parts13[27] == "7":
+          parts13[27] = "(7) Russian"
+        elif parts13[27] == "8":
+          parts13[27] = "(8) Arabic"
+        elif parts13[27] == "9":
+          parts13[27] = "(9) Filipino"
+        elif parts13[27] == "10":
+          parts13[27] = "(10) German"
+        elif parts13[27] == "11":
+          parts13[27] = "(11) Greek"
+        elif parts13[27] == "12":
+          parts13[27] = "(12) Hindi"
+        elif parts13[27] == "13":
+          parts13[27] = "(13) Italian"
+        elif parts13[27] == "14":
+          parts13[27] = "(14) Korean"
+        elif parts13[27] == "15":
+          parts13[27] = "(15) Polish"
+        elif parts13[27] == "16":
+          parts13[27] = "(16) Portuguese"
+        elif parts13[27] == "17":
+          parts13[27] = "(17) Other"
+        elif parts13[27] == "18":
+          parts13[27] = "(18) Declined"
+        else:
+          parts13[27] = "Other"
+
+        if parts13[28] == "1":   #Race ID
+          parts13[28] = "(1) White"
+        elif parts13[28] == "2":
+          parts13[28] = "(2) Black"
+        elif parts13[28] == "3":
+          parts13[28] = "(3) Other"
+        elif parts13[28] == "4":
+          parts13[28] = "(4) American Indian / Alaska Native"
+        elif parts13[28] == "5":
+          parts13[28] = "(5) Asian"
+        elif parts13[28] == "7":
+          parts13[28] = "(7) Nat Hawaiian / Pacific Islander"
+        elif parts13[28] == "8":
+          parts13[28] = "(8) Declined"
+
+        if parts13[30] == "0":   #Religion ID
+          parts13[30] = "(0) Unknown"
+        elif parts13[30] == "1":
+          parts13[30] = "(1) Protestant"
+        elif parts13[30] == "2":
+          parts13[30] = "(2) Catholic"
+        elif parts13[30] == "3":
+          parts13[30] = "(3) Buddhist"
+        elif parts13[30] == "4":
+          parts13[30] = "(4) Hindu"
+        elif parts13[30] == "5":
+          parts13[30] = "(5) Islam"
+        elif parts13[30] == "6":
+          parts13[30] = "(6) Other"
+        elif parts13[30] == "7":
+          parts13[30] = "(7) Jewish"
+        elif parts13[30] == "8":
+          parts13[30] = "(8) Jehovah's Witness"
+        elif parts13[30] == "9":
+          parts13[30] = "(9) Mormon"
+        elif parts13[30] == "99":
+          parts13[30] = "(99) N/A"
+
+        if parts13[39] == "0":     #Enabled True/False
+          parts13[39] = "(0) False"
+        elif parts13[39] == "1":
+          parts13[39] = "(1) True/Active"
+
+        if parts13[45] == "0":     #Ethnicity ID
+          parts13[45] = "(0) Unknown"
+        elif parts13[45] == "1":
+          parts13[45] = "(1) Hispanic or Latino"
+        elif parts13[45] == "2":
+          parts13[45] = "(2) Not Hispanic or Latino"
+        elif parts13[45] == "3":
+          parts13[45] = "(3) Declined"
+
+        if parts13[61] == "0":     #Country
+          parts13[61] = "(0) Unknown"
+        elif parts13[61] == "1":
+          parts13[61] = "(1) United States"
+        elif parts13[61] == "2":
+          parts13[61] = "(2) Mexico"
+        elif parts13[61] == "3":
+          parts13[61] = "(3) Canada"
+        elif parts13[61] == "4":
+          parts13[61] = "(4) United States Military"
+        result13 = ["{}: {}".format(h, p) for h, p in zip(header_words13, parts13)] ###################### Maybe only include financially responsible party??? #################
         output_text += "\n".join(result13) + "\n"
       else:
         if output_text == "":
@@ -607,80 +1036,200 @@ def reduced_patient_search():
       # Check if the first and last name match the line
       if parts[2].lower() == first_name.lower() and parts[5].lower() == last_name.lower() and date_of_birth in parts[10]:
         # Zip the header words and line words together and add them to the output text
+          
         if parts[8] == "0": #Suffix ID
           parts[8] = ""
         elif parts[8] == "1":
-          parts[8] = "Jr."
+          parts[8] = "(1) Jr."
         elif parts[8] == "2":
-          parts[8] = "Sr."
+          parts[8] = "(2) Sr."
         elif parts[8] == "3":
-          parts[8] = "I"
+          parts[8] = "(3) I"
         elif parts[8] == "4":
-          parts[8] = "II"
+          parts[8] = "(4) II"
         elif parts[8] == "5":
-          parts[8] = "III"
+          parts[8] = "(5) III"
         elif parts[8] == "6":
-          parts[8] = "IV"
+          parts[8] = "(6) IV"
 
         if parts[1] == "0": #Prefix ID
           parts[1] = ""
 
         if parts[13] == "0":   #Marriage Status
-          parts[13] = "Unknown"
+          parts[13] = "(0) Unknown"
         elif parts[13] == "1":
-          parts[13] = "Married"
+          parts[13] = "(1) Married"
         elif parts[13] == "2":
-          parts[13] = "Single"
+          parts[13] = "(2) Single"
         elif parts[13] == "3":
-          parts[13] = "Widowed"
+          parts[13] = "(3) Widowed"
         elif parts[13] == "4":
-          parts[13] = "Divorced"
+          parts[13] = "(4) Divorced"
         elif parts[13] == "5":
-          parts[13] = "Seperated"
+          parts[13] = "(5) Seperated"
         elif parts[13] == "6":
-          parts[13] = "Other"
+          parts[13] = "(6) Other"
         elif parts[13] == "7":
-          parts[13] = "Common Law"
+          parts[13] = "(7) Common Law"
         elif parts[13] == "8":
-          parts[13] = "Living Together"
+          parts[13] = "(8) Living Together"
         elif parts[13] == "9":
-          parts[13] = "Domestic Partner"
+          parts[13] = "(9) Domestic Partner"
         elif parts[13] == "10":
-          parts[13] = "Registered Domestic Partner"
+          parts[13] = "(10) Registered Domestic Partner"
         elif parts[13] == "11":
-          parts[13] = "Legally Seperated"
+          parts[13] = "(11) Legally Seperated"
         elif parts[13] == "12":
-          parts[13] = "Annulled"
+          parts[13] = "(12) Annulled"
         elif parts[13] == "13":
-          parts[13] = "Interlocutory"
+          parts[13] = "(13) Interlocutory"
         elif parts[13] == "14":
-          parts[13] = "Unmarried"
+          parts[13] = "(14) Unmarried"
         elif parts[13] == "15":
-          parts[13] = "Unreported"
+          parts[13] = "(15) Unreported"
 
         if parts[19] == "1":   #Race ID
-          parts[19] = "White"
+          parts[19] = "(1) White"
         elif parts[19] == "2":
-          parts[19] = "Black"
+          parts[19] = "(2) Black"
         elif parts[19] == "3":
-          parts[19] = "Other"
+          parts[19] = "(3) Other"
         elif parts[19] == "4":
-          parts[19] = "American Indian / Alaska Native"
+          parts[19] = "(4) American Indian / Alaska Native"
         elif parts[19] == "5":
-          parts[19] = "Asian"
+          parts[19] = "(5) Asian"
         elif parts[19] == "7":
-          parts[19] = "Nat Hawaiian / Pacific Islander"
+          parts[19] = "(7) Nat Hawaiian / Pacific Islander"
         elif parts[19] == "8":
-          parts[19] = "Declined"
+          parts[19] = "(8) Declined"
 
         if parts[12] == "0":   #Gender ID
-          parts[12] = "Unknown"
+          parts[12] = "(0) Unknown"
         elif parts[12] == "1":
-          parts[12] = "Female"
+          parts[12] = "(1) Female"
         elif parts[12] == "2":
-          parts[12] = "Male"
+          parts[12] = "(2) Male"
         elif parts[12] == "3":
-          parts[12] = "Other"
+          parts[12] = "(3) Other"
+        
+        if parts[36] == "0":   #Ethnicity
+          parts[36] = "(0) Unknown"
+        elif parts[36] == "1":
+          parts[36] = "(1) Hispanic or Latino"
+        elif parts[36] == "2":
+          parts[36] = "(2) Not Hispanic or Latino"
+        elif parts[36] == "3":
+          parts[36] = "(3) Declined"
+
+        if parts[21] == "0":   #Religion ID
+          parts[21] = "(0) Unknown"
+        elif parts[21] == "1":
+          parts[21] = "(1) Protestant"
+        elif parts[21] == "2":
+          parts[21] = "(2) Catholic"
+        elif parts[21] == "3":
+          parts[21] = "(3) Buddhist"
+        elif parts[21] == "4":
+          parts[21] = "(4) Hindu"
+        elif parts[21] == "5":
+          parts[21] = "(5) Islam"
+        elif parts[21] == "6":
+          parts[21] = "(6) Other"
+        elif parts[21] == "7":
+          parts[21] = "(7) Jewish"
+        elif parts[21] == "8":
+          parts[21] = "(8) Jehovah's Witness"
+        elif parts[21] == "9":
+          parts[21] = "(9) Mormon"
+        elif parts[21] == "99":
+          parts[21] = "(99) N/A"
+
+        if parts[17] == "0":   #Primary Language ID
+          parts[17] = "(0) Unknown"
+        elif parts[17] == "1":
+          parts[17] = "(1) English"
+        elif parts[17] == "2":
+          parts[17] = "(2) Spanish"
+        elif parts[17] == "3":
+          parts[17] = "(3) French"
+        elif parts[17] == "4":
+          parts[17] = "(4) Japanese"
+        elif parts[17] == "5":
+          parts[17] = "(5) Chinese"
+        elif parts[17] == "6":
+          parts[17] = "(6) Vietnamese"
+        elif parts[17] == "7":
+          parts[17] = "(7) Russian"
+        elif parts[17] == "8":
+          parts[17] = "(8) Arabic"
+        elif parts[17] == "9":
+          parts[17] = "(9) Filipino"
+        elif parts[17] == "10":
+          parts[17] = "(10) German"
+        elif parts[17] == "11":
+          parts[17] = "(11) Greek"
+        elif parts[17] == "12":
+          parts[17] = "(12) Hindi"
+        elif parts[17] == "13":
+          parts[17] = "(13) Italian"
+        elif parts[17] == "14":
+          parts[17] = "(14) Korean"
+        elif parts[17] == "15":
+          parts[17] = "(15) Polish"
+        elif parts[17] == "16":
+          parts[17] = "(16) Portuguese"
+        elif parts[17] == "17":
+          parts[17] = "(17) Other"
+        elif parts[17] == "18":
+          parts[17] = "(18) Declined"
+        else:
+          parts[17] = "Other"
+
+        if parts[18] == "0":   #Secondary Language ID
+          parts[18] = "(0) Unknown"
+        elif parts[18] == "1":
+          parts[18] = "(1) English"
+        elif parts[18] == "2":
+          parts[18] = "(2) Spanish"
+        elif parts[18] == "3":
+          parts[18] = "(3) French"
+        elif parts[18] == "4":
+          parts[18] = "(4) Japanese"
+        elif parts[18] == "5":
+          parts[18] = "(5) Chinese"
+        elif parts[18] == "6":
+          parts[18] = "(6) Vietnamese"
+        elif parts[18] == "7":
+          parts[18] = "(7) Russian"
+        elif parts[18] == "8":
+          parts[18] = "(8) Arabic"
+        elif parts[18] == "9":
+          parts[18] = "(9) Filipino"
+        elif parts[18] == "10":
+          parts[18] = "(10) German"
+        elif parts[18] == "11":
+          parts[18] = "(11) Greek"
+        elif parts[18] == "12":
+          parts[18] = "(12) Hindi"
+        elif parts[18] == "13":
+          parts[18] = "(13) Italian"
+        elif parts[18] == "14":
+          parts[18] = "(14) Korean"
+        elif parts[18] == "15":
+          parts[18] = "(15) Polish"
+        elif parts[18] == "16":
+          parts[18] = "(16) Portuguese"
+        elif parts[18] == "17":
+          parts[18] = "(17) Other"
+        elif parts[18] == "18":
+          parts[18] = "(18) Declined"
+        else:
+          parts[18] = "Other"
+
+        if parts[30] == "0":     #Enabled True/False
+          parts[30] = "(0) False"
+        elif parts[30] == "1":
+          parts[30] = "(1) True/Active"
 
 
         result = ["{}: {}".format(h, p) for h, p in zip(header_words, parts) if p] #################### added if p to remove any rows with no info
@@ -706,6 +1255,482 @@ def reduced_patient_search():
       break
     else:
       sticky_notes_label.configure(text = "No Sticky Note Found", bg = "Coral1")
+  
+  with open("/Georgetown Data/Discrete/Patient.txt", "r") as patient_file:
+    # Read the first line of the file (the header)
+    header2 = patient_file.readline().rstrip()
+    # Split the header by the '|' character
+    header_words2 = header2.split("|")
+
+    output_text += "PATIENT INFORMATION:---------------------------------------------------------------PATIENT INFORMATION:\n"
+
+    # Search for the name in the remaining lines of the file
+    for line2 in patient_file:
+      # Split the line by the '|' character
+      parts2 = line2.split("|")
+      # Check if the first and last name match the line
+      if parts2[0] == patient_id:
+        # Zip the header words and line words together and add them to the output text
+
+        if parts2[13] == "0":     #Enabled True/False
+          parts2[13] = "(0) False"
+        elif parts2[13] == "1":
+          parts2[13] = "(1) True/Active"
+
+        if parts2[14] == "0":     #Is patient True/False
+          parts2[14] = "(0) False"
+        elif parts2[14] == "1":
+          parts2[14] = "(1) True/Active"
+
+
+        result2 = ["{}: {}".format(h, p) for h, p in zip(header_words2, parts2) if p]
+        output_text += "\n".join(result2) + "\n"
+        care_provider_id = parts2[19]
+        break
+
+  with open("/Georgetown Data/Discrete/Address.txt", "r") as address_file:
+    # Read the first line of the file (the header)
+    header3 = address_file.readline().rstrip()
+    # Split the header by the '|' character
+    header_words3 = header3.split("|")
+
+    output_text += "ADDRESS INFORMATION:---------------------------------------------------------------ADDRESS INFORMATION:\n"
+
+    # Search for the name in the remaining lines of the file
+    for line3 in address_file:
+      # Split the line by the '|' character
+      parts3 = line3.split("|")
+      # Check if the first and last name match the line
+      if parts3[0] == address_id:
+        # Zip the header words and line words together and add them to the output text
+          
+
+        if parts3[6] == "0":     #Country
+          parts3[6] = "(0) Unknown"
+        elif parts3[6] == "1":
+          parts3[6] = "(1) United States"
+        elif parts3[6] == "2":
+          parts3[6] = "(2) Mexico"
+        elif parts3[6] == "3":
+          parts3[6] = "(3) Canada"
+        elif parts3[6] == "4":
+          parts3[6] = "(4) United States Military"
+
+
+        result3 = ["{}: {}".format(h, p) for h, p in zip(header_words3, parts3) if p]
+        output_text += "\n".join(result3) + "\n"
+      else:
+        if output_text == "":
+            break
+
+  with open("/Georgetown Data/Discrete/Allergy.txt", "r") as allergy_file: ################################## MULTIPLE ENTRIES
+    # Read the first line of the file (the header)
+    header4 = allergy_file.readline().rstrip()
+    # Split the header by the '|' character
+    header_words4 = header4.split("|")
+
+    output_text += "ALLERGY INFORMATION:---------------------------------------------------------------ALLERGY INFORMATION:\n"
+
+    # Search for the name in the remaining lines of the file
+    for line4 in allergy_file:
+      # Split the line by the '|' character
+      parts4 = line4.split("|")
+      # Check if the first and last name match the line
+      if parts4[0] == patient_id:
+        # Zip the header words and line words together and add them to the output text
+          
+        result4 = ["{}: {}".format(h, p) for h, p in zip(header_words4, parts4) if p]
+        output_text += "\n".join(result4) + "\n"
+      else:
+        if output_text == "":
+            break
+
+  with open("/Georgetown Data/Discrete/br_Account.txt", "r") as br_account_file:
+    # Read the first line of the file (the header)
+    header5 = br_account_file.readline().rstrip()
+    # Split the header by the '|' character
+    header_words5 = header5.split("|")
+
+    output_text += "BASIC ACCOUNT INFORMATION:---------------------------------------------------------------BASIC ACCOUNT INFORMATION:\n"
+
+    # Search for the name in the remaining lines of the file
+    for line5 in br_account_file:
+      # Split the line by the '|' character
+      parts5 = line5.split("|")
+      # Check if the first and last name match the line
+      if parts5[0] == patient_id:
+        # Zip the header words and line words together and add them to the output text
+          
+        result5 = ["{}: {}".format(h, p) for h, p in zip(header_words5, parts5) if p]
+        output_text += "\n".join(result5) + "\n"
+      else:
+        if output_text == "":
+            break
+
+  with open("/Georgetown Data/Discrete/PatientFlags.txt", "r") as patient_flags_file: ######################################### MULTIPLE ENTRIES
+    # Read the first line of the file (the header)
+    header7 = patient_flags_file.readline().rstrip()
+    # Split the header by the '|' character
+    header_words7 = header7.split("|")
+
+    output_text += "PATIENT FLAGS INFORMATION:---------------------------------------------------------------PATIENT FLAGS INFORMATION:\n"
+
+    # Search for the name in the remaining lines of the file
+    for line7 in patient_flags_file:
+      # Split the line by the '|' character
+      parts7 = line7.split("|")
+      # Check if the first and last name match the line
+      if parts7[0] == patient_id:
+        # Zip the header words and line words together and add them to the output text
+
+        result7 = header_words7[2] + ": " + parts7[2]#["{}: {}".format(h, p) for h, p in zip(header_words7, parts7) if p]
+        output_text += "".join(result7) + "\n"
+        flag_id = parts7[1]
+      else:
+        if output_text == "":
+            break
+
+  with open("/Georgetown Data/Discrete/Flag.txt", "r") as flag_file:
+    # Read the first line of the file (the header)
+    header8 = flag_file.readline().rstrip()
+    # Split the header by the '|' character
+    header_words8 = header8.split("|")
+
+    output_text += "FLAG INFORMATION:---------------------------------------------------------------FLAG INFORMATION:\n"
+
+    # Search for the name in the remaining lines of the file
+    for line8 in flag_file:
+      # Split the line by the '|' character
+      parts8 = line8.split("|")
+      # Check if the first and last name match the line
+      if parts8[0] == flag_id:
+        # Zip the header words and line words together and add them to the output text
+        parts8[3] = ""
+          
+        result8 = ["{}: {}".format(h, p) for h, p in zip(header_words8, parts8) if p]
+        output_text += "\n".join(result8) + "\n"
+        break
+
+  with open("/Georgetown Data/Discrete/NextOfKin.txt", "r") as next_of_kin_file:
+    # Read the first line of the file (the header)
+    header13 = next_of_kin_file.readline().rstrip()
+    # Split the header by the '|' character
+    header_words13 = header13.split("|")
+
+    output_text += "NEXT OF KIN INFORMATION:---------------------------------------------------------------NEXT OF KIN INFORMATION:\n"
+
+    # Search for the name in the remaining lines of the file
+    for line13 in next_of_kin_file:
+      # Split the line by the '|' character
+      parts13 = line13.split("|")
+      # Check if the first and last name match the line
+      if parts13[0] == patient_id and parts13[1] == "Financially Responsible Party":
+        # Zip the header words and line words together and add them to the output text
+
+        if parts13[4] == "0":     #Enabled True/False
+          parts13[4] = "(0) False"
+        elif parts13[4] == "1":
+          parts13[4] = "(1) True/Active"
+
+        if parts13[10] == "0": #Prefix ID
+          parts13[10] = ""
+
+        if parts13[17] == "0": #Suffix ID
+          parts13[17] = ""
+        elif parts13[17] == "1":
+          parts13[17] = "(1) Jr."
+        elif parts13[17] == "2":
+          parts13[17] = "(2) Sr."
+        elif parts13[17] == "3":
+          parts13[17] = "(3) I"
+        elif parts13[17] == "4":
+          parts13[17] = "(4) II"
+        elif parts13[17] == "5":
+          parts13[17] = "(5) III"
+        elif parts13[17] == "6":
+          parts13[17] = "(6) IV"
+
+        if parts13[21] == "0": #Gender ID
+          parts13[21] = "Unknown"
+        elif parts13[21] == "1":
+          parts13[21] = "(1) Female"
+        elif parts13[21] == "2":
+          parts13[21] = "(2) Male"
+        elif parts13[21] == "3":
+          parts13[21] = "(3) Other"
+
+        if parts13[22] == "0":   #Marriage Status
+          parts13[22] = "(0) Unknown"
+        elif parts13[22] == "1":
+          parts13[22] = "(1) Married"
+        elif parts13[22] == "2":
+          parts13[22] = "(2) Single"
+        elif parts13[22] == "3":
+          parts13[22] = "(3) Widowed"
+        elif parts13[22] == "4":
+          parts13[22] = "(4) Divorced"
+        elif parts13[22] == "5":
+          parts13[22] = "(5) Seperated"
+        elif parts13[22] == "6":
+          parts13[22] = "(6) Other"
+        elif parts13[22] == "7":
+          parts13[22] = "(7) Common Law"
+        elif parts13[22] == "8":
+          parts13[22] = "(8) Living Together"
+        elif parts13[22] == "9":
+          parts13[22] = "(9) Domestic Partner"
+        elif parts13[22] == "10":
+          parts13[22] = "(10) Registered Domestic Partner"
+        elif parts13[22] == "11":
+          parts13[22] = "(11) Legally Seperated"
+        elif parts13[22] == "12":
+          parts13[22] = "(12) Annulled"
+        elif parts13[22] == "13":
+          parts13[22] = "(13) Interlocutory"
+        elif parts13[22] == "14":
+          parts13[22] = "(14) Unmarried"
+        elif parts13[22] == "15":
+          parts13[22] = "(15) Unreported"
+
+        if parts13[26] == "0":   #Primary Language ID
+          parts13[26] = "(0) Unknown"
+        elif parts13[26] == "1":
+          parts13[26] = "(1) English"
+        elif parts13[26] == "2":
+          parts13[26] = "(2) Spanish"
+        elif parts13[26] == "3":
+          parts13[26] = "(3) French"
+        elif parts13[26] == "4":
+          parts13[26] = "(4) Japanese"
+        elif parts13[26] == "5":
+          parts13[26] = "(5) Chinese"
+        elif parts13[26] == "6":
+          parts13[26] = "(6) Vietnamese"
+        elif parts13[26] == "7":
+          parts13[26] = "(7) Russian"
+        elif parts13[26] == "8":
+          parts13[26] = "(8) Arabic"
+        elif parts13[26] == "9":
+          parts13[26] = "(9) Filipino"
+        elif parts13[26] == "10":
+          parts13[26] = "(10) German"
+        elif parts13[26] == "11":
+          parts13[26] = "(11) Greek"
+        elif parts13[26] == "12":
+          parts13[26] = "(12) Hindi"
+        elif parts13[26] == "13":
+          parts13[26] = "(13) Italian"
+        elif parts13[26] == "14":
+          parts13[26] = "(14) Korean"
+        elif parts13[26] == "15":
+          parts13[26] = "(15) Polish"
+        elif parts13[26] == "16":
+          parts13[26] = "(16) Portuguese"
+        elif parts13[26] == "17":
+          parts13[26] = "(17) Other"
+        elif parts13[26] == "18":
+          parts13[26] = "(18) Declined"
+        else:
+          parts13[26] = "Other"
+
+        if parts13[27] == "0":   #Primary Language ID
+          parts13[27] = "(0) Unknown"
+        elif parts13[27] == "1":
+          parts13[27] = "(1) English"
+        elif parts13[27] == "2":
+          parts13[27] = "(2) Spanish"
+        elif parts13[27] == "3":
+          parts13[27] = "(3) French"
+        elif parts13[27] == "4":
+          parts13[27] = "(4) Japanese"
+        elif parts13[27] == "5":
+          parts13[27] = "(5) Chinese"
+        elif parts13[27] == "6":
+          parts13[27] = "(6) Vietnamese"
+        elif parts13[27] == "7":
+          parts13[27] = "(7) Russian"
+        elif parts13[27] == "8":
+          parts13[27] = "(8) Arabic"
+        elif parts13[27] == "9":
+          parts13[27] = "(9) Filipino"
+        elif parts13[27] == "10":
+          parts13[27] = "(10) German"
+        elif parts13[27] == "11":
+          parts13[27] = "(11) Greek"
+        elif parts13[27] == "12":
+          parts13[27] = "(12) Hindi"
+        elif parts13[27] == "13":
+          parts13[27] = "(13) Italian"
+        elif parts13[27] == "14":
+          parts13[27] = "(14) Korean"
+        elif parts13[27] == "15":
+          parts13[27] = "(15) Polish"
+        elif parts13[27] == "16":
+          parts13[27] = "(16) Portuguese"
+        elif parts13[27] == "17":
+          parts13[27] = "(17) Other"
+        elif parts13[27] == "18":
+          parts13[27] = "(18) Declined"
+        else:
+          parts13[27] = "Other"
+
+        if parts13[28] == "1":   #Race ID
+          parts13[28] = "(1) White"
+        elif parts13[28] == "2":
+          parts13[28] = "(2) Black"
+        elif parts13[28] == "3":
+          parts13[28] = "(3) Other"
+        elif parts13[28] == "4":
+          parts13[28] = "(4) American Indian / Alaska Native"
+        elif parts13[28] == "5":
+          parts13[28] = "(5) Asian"
+        elif parts13[28] == "7":
+          parts13[28] = "(7) Nat Hawaiian / Pacific Islander"
+        elif parts13[28] == "8":
+          parts13[28] = "(8) Declined"
+
+        if parts13[30] == "0":   #Religion ID
+          parts13[30] = "(0) Unknown"
+        elif parts13[30] == "1":
+          parts13[30] = "(1) Protestant"
+        elif parts13[30] == "2":
+          parts13[30] = "(2) Catholic"
+        elif parts13[30] == "3":
+          parts13[30] = "(3) Buddhist"
+        elif parts13[30] == "4":
+          parts13[30] = "(4) Hindu"
+        elif parts13[30] == "5":
+          parts13[30] = "(5) Islam"
+        elif parts13[30] == "6":
+          parts13[30] = "(6) Other"
+        elif parts13[30] == "7":
+          parts13[30] = "(7) Jewish"
+        elif parts13[30] == "8":
+          parts13[30] = "(8) Jehovah's Witness"
+        elif parts13[30] == "9":
+          parts13[30] = "(9) Mormon"
+        elif parts13[30] == "99":
+          parts13[30] = "(99) N/A"
+
+        if parts13[39] == "0":     #Enabled True/False
+          parts13[39] = "(0) False"
+        elif parts13[39] == "1":
+          parts13[39] = "(1) True/Active"
+
+        if parts13[45] == "0":     #Ethnicity ID
+          parts13[45] = "(0) Unknown"
+        elif parts13[45] == "1":
+          parts13[45] = "(1) Hispanic or Latino"
+        elif parts13[45] == "2":
+          parts13[45] = "(2) Not Hispanic or Latino"
+        elif parts13[45] == "3":
+          parts13[45] = "(3) Declined"
+
+        if parts13[61] == "0":     #Country
+          parts13[61] = "(0) Unknown"
+        elif parts13[61] == "1":
+          parts13[61] = "(1) United States"
+        elif parts13[61] == "2":
+          parts13[61] = "(2) Mexico"
+        elif parts13[61] == "3":
+          parts13[61] = "(3) Canada"
+        elif parts13[61] == "4":
+          parts13[61] = "(4) United States Military"
+
+
+        parts13[2] = ""
+        parts13[7] = ""
+        parts13[8] = ""
+
+        result13 = ["{}: {}".format(h, p) for h, p in zip(header_words13, parts13) if p]
+        output_text += "\n".join(result13) + "\n"
+      else:
+        if output_text == "":
+            break
+
+  with open("/Georgetown Data/Discrete/PatHistMedical.txt", "r") as pat_hist_medical_file:
+    # Read the first line of the file (the header)
+    header16 = pat_hist_medical_file.readline().rstrip()
+    # Split the header by the '|' character
+    header_words16 = header16.split("|")
+
+    output_text += "PAST MEDICAL HISTORY INFORMATION:---------------------------------------------------------------PAST MEDICAL HISTORY INFORMATION:\n"
+
+    # Search for the name in the remaining lines of the file
+    for line16 in pat_hist_medical_file:
+      # Split the line by the '|' character
+      parts16 = line16.split("|")
+      # Check if the first and last name match the line
+      if parts16[0] == patient_id:
+        # Zip the header words and line words together and add them to the output text
+        result16 = ["{}: {}".format(h, p) for h, p in zip(header_words16, parts16) if p]
+        output_text += "\n".join(result16) + "\n"
+      else:
+        if output_text == "":
+            break
+
+  with open("/Georgetown Data/Discrete/PatHistSurgical.txt", "r") as pat_hist_surgical_file:
+    # Read the first line of the file (the header)
+    header18 = pat_hist_surgical_file.readline().rstrip()
+    # Split the header by the '|' character
+    header_words18 = header18.split("|")
+
+    output_text += "PAST SURGICAL HISTORY INFORMATION:---------------------------------------------------------------PAST SURGICAL HISTORY INFORMATION:\n"
+
+    # Search for the name in the remaining lines of the file
+    for line18 in pat_hist_surgical_file:
+      # Split the line by the '|' character
+      parts18 = line18.split("|")
+      # Check if the first and last name match the line
+      if parts18[0] == patient_id:
+        # Zip the header words and line words together and add them to the output text
+        result18 = ["{}: {}".format(h, p) for h, p in zip(header_words18, parts18) if p]
+        output_text += "\n".join(result18) + "\n"
+      else:
+        if output_text == "":
+            break
+
+  with open("/Georgetown Data/Discrete/ProblemList.txt", "r") as problem_list_file:
+    # Read the first line of the file (the header)
+    header20 = problem_list_file.readline().rstrip()
+    # Split the header by the '|' character
+    header_words20 = header20.split("|")
+
+    output_text += "PROBLEM LIST INFORMATION:---------------------------------------------------------------PROBLEM LIST INFORMATION:\n"
+
+    # Search for the name in the remaining lines of the file
+    for line20 in problem_list_file:
+      # Split the line by the '|' character
+      parts20 = line20.split("|")
+      # Check if the first and last name match the line
+      if parts20[0] == patient_id:
+        # Zip the header words and line words together and add them to the output text
+        result20 = ["{}: {}".format(h, p) for h, p in zip(header_words20, parts20) if p]
+        output_text += "\n".join(result20) + "\n"
+      else:
+        if output_text == "":
+            break
+
+  with open("/Georgetown Data/Discrete/PatientGeneralNotes.txt", "r") as patient_general_notes_file:
+    # Read the first line of the file (the header)
+    header19 = patient_general_notes_file.readline().rstrip()
+    # Split the header by the '|' character
+    header_words19 = header19.split("|")
+
+    output_text += "PATIENT GENERAL NOTES INFORMATION:---------------------------------------------------------------PATIENT GENERAL NOTES INFORMATION:\n"
+
+    # Search for the name in the remaining lines of the file
+    for line19 in patient_general_notes_file:
+      # Split the line by the '|' character
+      parts19 = line19.split("|")
+      # Check if the first and last name match the line
+      if parts19[1] == patient_id:
+        # Zip the header words and line words together and add them to the output text
+        result19 = ["{}: {}".format(h, p) for h, p in zip(header_words19, parts19) if p]
+        output_text += "\n".join(result19) + "\n"
+      else:
+        if output_text == "":
+            break
 
   # Clear the text widget
   output_text_widget.delete("1.0", tk.END)
